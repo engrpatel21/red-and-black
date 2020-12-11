@@ -1,22 +1,49 @@
-import React from 'react';
-import SideMenu from '../Components/SideMenu';
-import {makeStyles} from '@material-ui/core'
+import React from "react";
+import SideMenu from "../Components/SideMenu";
+import {
+  createMuiTheme,
+  CssBaseline,
+  makeStyles,
+  ThemeProvider,
+} from "@material-ui/core";
+import Header from "../Components/Header";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#ff0000",
+      light: "#3c44b126",
+    },
+    secondary: {
+      main: "#f83245",
+      light: "#f8324526",
+    },
+    background: {
+      default: 'black'
+    }
+  },
+});
 
 const useStyles = makeStyles({
   appMain: {
-    paddingLeft: '320px',
-    width: '100%'
-  }
-})
+    paddingLeft: "320px",
+    width: "100%",
+  },
+});
 
 function App() {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
-    <div className="App">
-      <SideMenu />
-      <div className={classes.appMain} >here we go</div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <SideMenu />
+        <div className={classes.appMain}>
+          <Header></Header>
+        </div>
+        <CssBaseline />
+      </div>
+    </ThemeProvider>
   );
 }
 
